@@ -8,8 +8,8 @@ import pandas as pd
 
 from aif360.datasets import Dataset
 
-
-class StructuredDataset(Dataset):
+# defining class, inherits dataset class
+class StructuredDataset(Dataset):                                                         # this is used when the dataset is already structured? i.e. in a numpy array?
     """Base class for all structured datasets.
 
     A StructuredDataset requires data to be stored in :obj:`numpy.ndarray`
@@ -58,7 +58,7 @@ class StructuredDataset(Dataset):
                 }
     """
 
-    def __init__(self, df, label_names, protected_attribute_names,
+    def __init__(self, df, label_names, protected_attribute_names,                # constructor method
                  instance_weights_name=None, scores_names=[],
                  unprivileged_protected_attributes=[],
                  privileged_protected_attributes=[], metadata=None):
@@ -82,7 +82,7 @@ class StructuredDataset(Dataset):
                 considered privileged.
             metadata (optional): Additional metadata to append.
 
-        Raises:
+        Raises:                                                                               # exception handling
             TypeError: Certain fields must be np.ndarrays as specified in the
                 class description.
             ValueError: ndarray shapes must match.
@@ -170,7 +170,7 @@ class StructuredDataset(Dataset):
         return subset
 
 
-    def __eq__(self, other):
+    def __eq__(self, other):                                                             # actually comaprison equality rather than comparing memory (which would always output Fasle)
         """Equality comparison for StructuredDatasets.
 
         Note: Compares all fields other than those specified in `ignore_fields`.
@@ -178,7 +178,7 @@ class StructuredDataset(Dataset):
         if not isinstance(other, StructuredDataset):
             return False
 
-        def _eq(x, y):
+        def _eq(x, y):                                                                  # _ denotes user should not edit this
             if isinstance(x, np.ndarray) and isinstance(y, np.ndarray):
                 return np.all(x == y)
             elif isinstance(x, list) and isinstance(y, list):
