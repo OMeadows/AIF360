@@ -51,6 +51,11 @@ class AdversarialDebiasing(Transformer):
             debias (bool, optional): Learn a classifier with or without
                 debiasing.
         """
+        
+        # super is a function in Python that is used to call a method on another class. 
+        # When a class inherits from another class, that class is said to be its parent class, base class, or superclass.
+        # In simple inheritance, super is pretty straightforward because it goes directly to the parent class and calls the method if it's available
+           
         super(AdversarialDebiasing, self).__init__(
             unprivileged_groups=unprivileged_groups,
             privileged_groups=privileged_groups)
