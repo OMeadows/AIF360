@@ -1,12 +1,19 @@
+# importing ABC, this module provides infrastructure for defining abstract base classes
+# these compliment duck typing (programming style doesnt look at object;s type to detemine if it has right interface
+# ABCs do this by providing way to define interfaces when other techniques (e.g. hasattr()) would be clumsy/wrong
+# ABCs introduce virtual subclasses, classe which don't inherit from a class but are still recognised by isinstance() and issubclass()
+# can create own ABCs with abc module
 from abc import ABC, abstractmethod
+
+# used for shallow and deep copy operations
 import copy
 
-
+# defining Dataset class, inheriting ABC class
 class Dataset(ABC):
     """Abstract base class for datasets."""
 
-    @abstractmethod
-    def __init__(self, **kwargs):
+    @abstractmethod                                                             #decorator
+    def __init__(self, **kwargs):                                               #constructor
         self.metadata = kwargs.pop('metadata', dict()) or dict()
         self.metadata.update({
             'transformer': '{}.__init__'.format(type(self).__name__),
