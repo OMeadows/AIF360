@@ -2,7 +2,7 @@ import numpy as np
 
 from aif360.datasets import StructuredDataset
 
-
+# defining class, inherits StructuredDataset
 class BinaryLabelDataset(StructuredDataset):
     """Base class for all structured datasets with binary labels."""
 
